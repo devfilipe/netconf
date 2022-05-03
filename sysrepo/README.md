@@ -191,7 +191,7 @@ In this example there is no subscriber an data lifetime is limited by the lifeti
 
 ```bash
 # compile
-gcc -o oper_data_push_example.out oper_data_push_example.c -I ${SYSREPO_DIR}/src/ -lsysrepo
+$ gcc -o oper_data_push_example.out oper_data_push_example.c -I ${SYSREPO_DIR}/src/ -lsysrepo
 
 # run
 $ chmod a+x oper_data_push_example.out
@@ -208,5 +208,5 @@ $ gcc -o oper_pull_push_example.out oper_pull_push_example.c -I${SYSREPO_DIR}/sr
 
 # run
 $ chmod a+x oper_pull_push_example.out
-$./oper_pull_push_example.out
+$ ./oper_pull_push_example.out
 ```
