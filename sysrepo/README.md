@@ -480,3 +480,34 @@ DATA
   </cont>
 </data>
 ```
+
+Troubleshooting
+----
+
+- Can't reconnect to NETCONF server after `netopeer2-cli > disconnect` command
+
+I had to rebuild `netopeer2` (I guess there was a problem with `libssh`):
+
+```bash
+# stop NETCONF server
+
+# (re)install libssh2
+$ apt-get remove libssh2-1
+$ apt-get install libssh2-1
+
+# check libssh2 is installed
+$ ldconfig -p | grep libssh
+libssh2.so.1 (libc6,x86-64) => /usr/lib/x86_64-linux-gnu/libssh2.so.1
+
+# reinstal netopeer
+
+# remove old ssh keys
+$ ssh-keygen -f "/root/.ssh/known_hosts" -R "[localhost]:830"
+
+# start NETCONF server
+$ netopeer2-server
+
+# start netopeer2-cli
+$ netopeer2-cli
+> connect --ssh --port 830 --host localhost --login ${USER}
+```
